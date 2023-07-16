@@ -7,11 +7,11 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 contract HelloToken is ERC1155, Ownable {
     constructor() ERC1155("") {}
 
-    function mint(address account, uint256 id, uint256 amount, bytes memory data)
+    function mint( uint256 id, uint256 amount, bytes memory data)
         public
         onlyOwner
     {
-        _mint(account, id, amount, data);
+        _mint(msg.sender, id, amount, data);
     }
 
     function mintBatch(address to, uint256[] memory ids, uint256[] memory amounts, bytes memory data)
