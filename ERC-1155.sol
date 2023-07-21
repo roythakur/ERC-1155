@@ -6,6 +6,7 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract HelloToken is ERC1155, Ownable {
 uint256[] supplies  =[20, 40, 42];
+ uint256[] minted = [0,0,0];
 
     constructor() ERC1155("") {}
 
@@ -15,6 +16,12 @@ uint256[] supplies  =[20, 40, 42];
     {
  require(id<supplies.length, "Token does not exist");
          require(id>0, "Token does not exist");
+
+uint index= id-1;
+
+         require(minted[index]+amount<=supplies[index], "NO ENOUGH SUPPLY");
+        
+         minted[index]+=amount;
 
         _mint(msg.sender, id, amount, data);
     }
