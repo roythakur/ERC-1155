@@ -13,6 +13,7 @@ uint256[] supplies  =[20, 40, 42];
 
     function mint( uint256 id, uint256 amount, bytes memory data)
         public
+        payable
      
     {
  require(id<supplies.length, "Token does not exist");
