@@ -7,6 +7,7 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 contract HelloToken is ERC1155, Ownable {
 uint256[] supplies  =[20, 40, 42];
  uint256[] minted = [0,0,0];
+ uint256[] rates = [0.05 ether, 0.001 ether, 0.1 ether];
 
     constructor() ERC1155("") {}
 
@@ -20,7 +21,7 @@ uint256[] supplies  =[20, 40, 42];
 uint index= id-1;
 
          require(minted[index]+amount<=supplies[index], "NO ENOUGH SUPPLY");
-        
+         require(msg.value>=amount*rates[index], "NO ENOUGH ETHERS");
          minted[index]+=amount;
 
         _mint(msg.sender, id, amount, data);
