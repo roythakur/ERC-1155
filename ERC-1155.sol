@@ -9,7 +9,12 @@ uint256[] supplies  =[20, 40, 42];
  uint256[] minted = [0,0,0];
  uint256[] rates = [0.05 ether, 0.001 ether, 0.1 ether];
 
-    constructor() ERC1155("") {}
+    constructor() ERC1155("") {}  
+
+     // for image uri
+    //  function setURI(string memory newuri) public onlyOwner {
+    //     _setURI(newuri);
+    // }
 
     function mint( uint256 id, uint256 amount, bytes memory data)
         public
